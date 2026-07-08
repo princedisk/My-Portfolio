@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prince Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgb(0, 0, 33);
+            color: rgb(254, 252, 252);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px 100px;
+            background-color: rgb(0, 0, 33);
+            height: 50px;
+            background-color: rgb(18, 18, 62);
+            font-size: 20px;
+
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            list-style: none;
+            margin: 0 23px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: rgb(242, 240, 240);
+
+        }
+
+        hr {
+            border: none;
+            background: linear-gradient(90deg, rgba(7, 43, 31, 0), rgb(21, 156, 210), rgba(7, 43, 31, 0));
+            height: 2px;
+            margin: 50px 84px;
+            width: calc(100% - 168px);
+        }
+
+        nav ul li a:hover {
+            color: rgb(153, 153, 226);
+            font-size: 1.4rem;
+        }
+
+        .left {
+            font-size: 1.3rem;
+        }
+
+        .firstsection {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 100px;
+            margin-left: 100px;
+
+
+        }
+
+        .firstsection>div {
+            width: 50%;
+
+
+
+        }
+
+        .leftsection {
+            font-size: 3rem;
+            margin: 30px;
+            margin-left: 50px;
+            margin-bottom: 100px;
+        }
+
+        .social {
+            margin-top: 20px;
+        }
+
+        .leftsection span {
+            background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
+            background-clip: text;
+            color: transparent;
+            font-size: 60px;
+            margin-top: 20px;
+
+
+        }
+
+        .leftsection h6 {
+            margin-top: 30px;
+            color: rgb(205, 205, 249);
+        }
+
+
+        .rightsection img {
+            width: 90%;
+            display: flex;
+            border-radius: 30%;
+
+
+        }
+
+
+
+        .text-gray {
+            color: gray;
+        }
+
+
+        .section-title {
+            text-align: center;
+            font-size: 4rem;
+            margin-bottom: 3rem;
+            color: rgb(153, 153, 226);
+
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 30px 0;
+        }
+
+        .education-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            text-align: left;
+            gap: 0.35rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 12px;
+            padding: 1rem 1.1rem;
+            margin: 0;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .education-card h4 {
+            margin: 0;
+            color: rgb(168, 240, 249);
+
+        }
+
+        .education-card p {
+            margin: 0;
+            color: #dfe7ff;
+            line-height: 1.6;
+        }
+
+        .education h3 {
+            color: rgb(168, 240, 249);
+            text-align: center;
+            margin-bottom: 1.25rem;
+
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 30px 0;
+        }
+
+        .skills-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            text-align: left;
+            gap: 0.35rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 12px;
+            padding: 1rem 1.1rem;
+            margin: 0;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .skills-card h4 {
+            margin: 0;
+            color: rgb(168, 240, 249);
+        }
+
+        .skills-card p {
+            margin: 0;
+            color: #f8f8f8;
+            line-height: 1.6;
+        }
+
+
+
+
+
+
+        .certificate-grid {
+            display: flex;
+            gap: 20rem;
+            margin-left: 50px;
+            margin-right: 50px;
+            margin-top: 10px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 10px;
+            
+        }
+
+        .certificate-grid::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .certificate-grid::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .certificate-grid::-webkit-scrollbar-thumb {
+            background: rgba(153, 153, 226, 0.6);
+            border-radius: 10px;
+        }
+
+        .certificate-grid::-webkit-scrollbar-thumb:hover {
+            background: rgba(153, 153, 226, 1);
+        }
+
+        .certificate-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .certificate-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 1rem;
+            border: 2px solid white;
+            border-radius: 3rem;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            padding: 3rem 2rem;
+            flex: 0 0 auto;
+            min-width: 600px;
+            max-width: 600px;
+
+        }
+
+        .certificate-card h2 {
+            align-items: center;
+            background: linear-gradient(to right, rgb(208, 172, 208), rgb(0, 157, 255));
+            background-clip: text;
+            color: transparent;
+            margin-top: 20px;
+        }
+
+        .certificate-progress {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(153, 153, 226, 0.4);
+            cursor: pointer;
+            transition: 0.3s ease;
+            border: 2px solid rgba(153, 153, 226, 0.6);
+        }
+
+        .progress-dot.active {
+            background: rgb(153, 153, 226);
+            transform: scale(1.2);
+            border: 2px solid rgb(153, 153, 226);
+        }
+
+        .progress-dot:hover {
+            background: rgba(153, 153, 226, 0.8);
+        }
+
+        .nav-btn {
+            display: none;
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(153, 153, 226, 0.8);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(153, 153, 226, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev-btn {
+            left: 10px;
+        }
+
+        .next-btn {
+            right: 10px;
+        }
+
+        .certificate-section-wrapper {
+            position: relative;
+        }
+
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .experience-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            border: 2px solid white;
+            border-radius: 3rem;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            padding: 3rem 2rem;
+            line-height: 2;
+
+
+        }
+
+        .experience-card h2 {
+            text-align: center;
+            background: linear-gradient(to right, rgb(240, 112, 195), rgb(119, 186, 228));
+            background-clip: text;
+            color: transparent;
+        }
+
+        .experience-card h3 {
+            text-align: left;
+            background: linear-gradient(to right, rgb(243, 165, 165), rgb(92, 56, 56));
+            background-clip: text;
+            color: transparent;
+
+        }
+
+
+
+        .secondimage img {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 20%;
+
+
+        }
+
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .projects-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            border: 2px solid white;
+            border-radius: 3rem;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            padding: 3rem 2rem;
+            line-height: 1.5;
+            word-spacing: 1.2;
+        }
+
+        .projects-card img {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+
+
+        }
+
+        .projects-card h3 {
+            text-align: center;
+            background: linear-gradient(to right, rgb(220, 209, 220), rgb(0, 157, 255));
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer {
+
+            color: lightcyan;
+            text-align: center;
+            padding: 1opx;
+            font-size: 1.4rem;
+        }
+
+        .accounts {
+            margin-left: 100px;
+            font-size: 40px;
+            text-align: center;
+            transform: translateX(-10%);
+            margin-top: 20px;
+        }
+
+        .instagram {
+            background: linear-gradient(45deg, #f58529, #dd2a7b, #8134AF, #515BD4);
+            background-clip: text;
+            color: transparent;
+        }
+
+        .whatsapp {
+            color: rgb(74, 197, 74);
+            margin-left: 25px;
+        }
+
+        .linkedin2 {
+            margin-left: 25px;
+            color: #007785;
+
+        }
+
+        .githhub2 {
+            margin-left: 25px;
+            color: #181717;
+            background-color: white;
+            border-radius: 100%;
+
+
+        }
+
+
+        .contact-me h3 {
+
+            color: rgb(193, 169, 169);
+            margin-top: 2rem;
+            text-align: center;
+            transform: translateX(-20%);
+            font-size: 2.5rem;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">Prince Portfolio</div>
+            <div class="right">
+                <ul>
+
+                    <li><a href="/">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#skills">My Skills</a></li>
+                    <li><a href="#certificates">Certificates</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact-me">Contact Me</a></li>
+
+
+                </ul>
+
+            </div>
+
+        </nav>
+
+    </header>
+    <main>
+
+        <section class="firstsection">
+            <div class="leftsection">
+                <h3>Hi, I am</h3>
+                <h2>Prince Raj Singh</h2>
+                <span>Web Developer</span>
+
+
+                <h6>A web developer who believes design should
+                    do more than look good. </h6>
+
+                <div class="social">
+                    <a href="https://github.com/princedisk" target="_blank" class="githhub2">
+
+                        <i class="fa-brands fa-github"></i></a>
+
+
+                    <a href="https://www.linkedin.com/in/princerajsingh07" target="_blank" class="linkedin2">
+
+                        <i class="fa-brands fa-linkedin"></i></a>
+
+                </div>
+            </div>
+
+            <div class="rightsection">
+                <img src="bg.png.jpg" alt="">
+            </div>
+        </section>
+
+        <hr>
+
+
+        <section id="education" class="education">
+            <h2 class="section-title">Education</h2>
+            <h3>
+                <p style="text-decoration:underline;">My Academic Background And Qualification
+                <p>
+            </h3>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h4>Bachelor of Computer Application (BCA)</h4>
+                    <p>👉Guru Nanak College, Dehradun | 2024-2027</p>
+                </div>
+                <div class="education-card">
+                    <h4>Class 12th</h4>
+                    <p>👉St. John's Academy Mahua, Hajipur, Vaishali, BR</p>
+                </div>
+                <div class="education-card">
+                    <h4>Ethical Hacking Course</h4>
+                    <p>👉By IIT Kharagpur (Online)</p>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="skills" class="skills">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-grid">
+                <div class="skills-card">
+                    <h4>Programming Languages</h4>
+                    <p>C, C++, DBMS, .NET</p>
+                </div>
+                <div class="skills-card">
+                    <h4>Web Development</h4>
+                    <p>HTML, JavaScript, CSS</p>
+                </div>
+                <div class="skills-card">
+                    <h4>Tools & Technologies</h4>
+                    <p>MySQL, Git & GitHub, VS Code</p>
+                </div>
+            </div>
+        </section>
+
+
+        <hr>
+
+        <section id="certificates" class="certificates">
+
+            <h2 class="section-title"> My Certificates </h2>
+            <div class="certificate-section-wrapper">
+                <div class="certificate-grid">
+                    <div class="certificate-card">
+
+                        <img src="certificate1_page-0001.jpg" alt="">
+                        <h2>Internet Of Things</h2>
+                    </div>
+                    <div class="certificate-card">
+
+                        <img src="certificate2_page-0001.jpg" alt="">
+                        <h2>It For Non It</h2>
+                    </div>
+                <div class="certificate-card">
+
+                    <img src="certificate4_page-0001.jpg" alt="">
+                    <h2>Ethical Hacking</h2>
+                </div>
+                <div class="certificate-card">
+
+                    <img src="certificate3_page-0001.jpg" alt="">
+                    <h2>Young Professional</h2>
+                </div>
+
+
+                </div>
+                <div class="certificate-progress" id="certificateProgress"></div>
+            </div>
+        </section>
+
+
+        <hr>
+        <section id="experience" class="experience">
+
+            <h2 class="section-title"> Experience </h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <ul>
+
+                        <h2>Dotplus Company </style>
+                        </h2>
+                        <h3>Front End Development Intern (Completed)</h3>
+                        <br>
+                        <li>Succesfully completed a 2 month internship as a Front End Development Intern at Dotplus
+                            Company.</li>
+                        <li>worked on Real-time projects and Gained practical experience in building responsive and
+                            user-friendly web interfaces.</li>
+                        <li>Used HTMl, CSS , and basic JavaScrit to create clean,interactive web pages.</li>
+                        <li>Collaborated with the team to understand project requirement and implement effective
+                            solution.</li>
+                        <li>Gained hands-on experiences in frontend technologies problem-solveing and best coding
+                            practices.</li>
+
+                    </ul>
+                </div>
+
+
+                <div class="experience-card">
+                    <h2>Fresher</h2>
+                    <ul>
+                        <li>A motivated fresher with completed internship experience and gained exposure to a
+                            professional work environment.</li>
+                        <li>Quick learner with a positive attitude and the ability to adapt to different work
+                            environments.</li>
+                        <li>Focused on continious growth and contributing effectively to organisational goals.</li>
+
+
+                    </ul>
+                </div>
+
+                <div class="secondimage">
+                    <img src="image4.jpg" alt="">
+                </div>
+
+
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="projects" class="projects">
+
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="projects-card">
+
+                    <img src="image1.png" alt="">
+                    <h3>Student Record Management System</h3>
+                    <p>
+                    <h4>A responsive web-based application designed to efficiently
+                        manage student information, includingregistration, academic
+                        records, and personal details. The system streamlines data entry,
+                        updates, and retrieval with a user-friendly interface, ensuring
+                        accuracy and accessibility. Built using HTML, CSS, and JavaScript,
+                        it demonstrates practical skills in form handling,
+                        responsive design, and database integration.
+                        <h4>
+                            </p>
+                </div>
+                <div class="projects-card">
+                    <img src="image2.png" alt="">
+                    <h3> Digital Literacy Practice Work</h3>
+                    <p>
+                    <h4>A structured project focused on enhancing essential digital skills,
+                        including safe internet usage, productivity tools, and basic coding
+                        concepts. It highlights practical exercises in
+                        document creation, online communication, and responsible digita
+                        l behavior. This project demonstrates adaptability in applying technology
+                        for everyday tasks, showcasing both technical
+                        knowledge and awareness of digital citizenship.
+                    </h4>
+                    </p>
+                </div>
+
+                <div class="projects-card">
+                    <img src="image3.png" alt="">
+                    <h3>Database Management System</h3>
+                    <p>
+                    <h4>
+                        This project gave me hands‑on experience in designing and managing
+                        databases. I worked on creating tables, defining relationships, and
+                        writing queries to organize and retrieve data efficiently. It helped me
+                        strengthen my understanding of how structured data supports applications and
+                        improved my skills in accuracy, performance, and real‑world problem solving.
+                    </h4>
+                    </p>
+                </div>
+            </div>
+            <hr>
+        </section>
+
+        <section id="contact-me" class="contact-me">
+            <h2 class=section-title>Contact Me</h2>
+            <h3>Social Accounts :-</h3>
+            <div class=" accounts">
+                <a href="https://instagram.com/unique_07_prince" target="_blank" class="instagram">
+
+                    <i class="fa-brands fa-instagram"></i></a>
+
+                <a href="https://wa.me/+917323032528" target="_blank" class="whatsapp">
+
+                    <i class="fa-brands fa-whatsapp"></i></a>
+
+                <a href="https://www.linkedin.com/in/princerajsingh07" target="_blank" class="linkedin2">
+
+                    <i class="fa-brands fa-linkedin"></i></a>
+
+                <a href="https://github.com/princedisk" target="_blank" class="githhub2">
+
+                    <i class="fa-brands fa-github"></i></a>
+        </section>
+        <hr>
+
+
+
+        <footer class="footer">
+
+            <nav>Copyright © 2007-2026 || Prince Raj Singh
+                <br> licence Number
+            </nav>
+
+        </footer>
+
+    </main>
+
+
+</body>
+
+<script>
+    const certificateGrid = document.querySelector('.certificate-grid');
+    const certificateCards = document.querySelectorAll('.certificate-card');
+    const progressContainer = document.getElementById('certificateProgress');
+    const totalCertificates = certificateCards.length;
+
+    // Create progress dots
+    function createProgressDots() {
+        for (let i = 0; i < totalCertificates; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'progress-dot';
+            if (i === 0) dot.classList.add('active');
+            dot.onclick = () => scrollToIndex(i);
+            progressContainer.appendChild(dot);
+        }
+    }
+
+    // Update progress dots based on scroll position
+    function updateProgressDots() {
+        const scrollLeft = certificateGrid.scrollLeft;
+        const cardWidth = certificateCards[0].offsetWidth + 20; // card width + gap
+        const currentIndex = Math.round(scrollLeft / cardWidth);
+        
+        document.querySelectorAll('.progress-dot').forEach((dot, index) => {
+            dot.classList.remove('active');
+            if (index === currentIndex) {
+                dot.classList.add('active');
+            }
+        });
+    }
+
+    // Scroll to specific certificate
+    function scrollToIndex(index) {
+        const cardWidth = certificateCards[0].offsetWidth + 20;
+        certificateGrid.scrollLeft = index * cardWidth;
+    }
+
+    // Listen to scroll events
+    certificateGrid.addEventListener('scroll', updateProgressDots);
+
+    // Initialize
+    createProgressDots();
+</script>
+
+</html>
