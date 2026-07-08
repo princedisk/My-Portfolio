@@ -206,13 +206,33 @@
 
 
         .certificate-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-left: 30px;
-            margin-right: 30px;
+            display: flex;
+            gap: 20rem;
+            margin-left: 50px;
+            margin-right: 50px;
             margin-top: 10px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 10px;
+            
+        }
 
+        .certificate-grid::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .certificate-grid::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .certificate-grid::-webkit-scrollbar-thumb {
+            background: rgba(153, 153, 226, 0.6);
+            border-radius: 10px;
+        }
+
+        .certificate-grid::-webkit-scrollbar-thumb:hover {
+            background: rgba(153, 153, 226, 1);
         }
 
         .certificate-card img {
@@ -233,14 +253,83 @@
             cursor: pointer;
             transition: 0.3s ease-in-out;
             padding: 3rem 2rem;
+            flex: 0 0 auto;
+            min-width: 600px;
+            max-width: 600px;
 
         }
 
-        .certificate-card h3 {
+        .certificate-card h2 {
             align-items: center;
             background: linear-gradient(to right, rgb(208, 172, 208), rgb(0, 157, 255));
             background-clip: text;
             color: transparent;
+            margin-top: 20px;
+        }
+
+        .certificate-progress {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(153, 153, 226, 0.4);
+            cursor: pointer;
+            transition: 0.3s ease;
+            border: 2px solid rgba(153, 153, 226, 0.6);
+        }
+
+        .progress-dot.active {
+            background: rgb(153, 153, 226);
+            transform: scale(1.2);
+            border: 2px solid rgb(153, 153, 226);
+        }
+
+        .progress-dot:hover {
+            background: rgba(153, 153, 226, 0.8);
+        }
+
+        .nav-btn {
+            display: none;
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(153, 153, 226, 0.8);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(153, 153, 226, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev-btn {
+            left: 10px;
+        }
+
+        .next-btn {
+            right: 10px;
+        }
+
+        .certificate-section-wrapper {
+            position: relative;
         }
 
 
@@ -491,32 +580,32 @@
         <section id="certificates" class="certificates">
 
             <h2 class="section-title"> My Certificates </h2>
-            <div class="certificate-grid">
+            <div class="certificate-section-wrapper">
+                <div class="certificate-grid">
+                    <div class="certificate-card">
+
+                        <img src="certificate1_page-0001.jpg" alt="">
+                        <h2>Internet Of Things</h2>
+                    </div>
+                    <div class="certificate-card">
+
+                        <img src="certificate2_page-0001.jpg" alt="">
+                        <h2>It For Non It</h2>
+                    </div>
                 <div class="certificate-card">
 
-                    <img src="certificate1_page-0001.jpg" alt="">
-                    <h3>Internet Of Things</h3>
+                    <img src="certificate4_page-0001.jpg" alt="">
+                    <h2>Ethical Hacking</h2>
                 </div>
                 <div class="certificate-card">
 
-                    <img src="certificate2_page-0001.jpg" alt="">
-                    <h3>It For Non It</h3>
+                    <img src="certificate3_page-0001.jpg" alt="">
+                    <h2>Young Professional</h2>
                 </div>
 
-        </section>
-        <section class="certificate-grid">
-            <div class="certificate-card">
 
-                <img src="certificate4_page-0001.jpg" alt="">
-                <h3>Ethical Hacking</h3>
-            </div>
-            <div class="certificate-card">
-
-                <img src="certificate3_page-0001.jpg" alt="">
-                <h3>Young Professional</h3>
-            </div>
-
-
+                </div>
+                <div class="certificate-progress" id="certificateProgress"></div>
             </div>
         </section>
 
@@ -657,5 +746,49 @@
 
 
 </body>
+
+<script>
+    const certificateGrid = document.querySelector('.certificate-grid');
+    const certificateCards = document.querySelectorAll('.certificate-card');
+    const progressContainer = document.getElementById('certificateProgress');
+    const totalCertificates = certificateCards.length;
+
+    // Create progress dots
+    function createProgressDots() {
+        for (let i = 0; i < totalCertificates; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'progress-dot';
+            if (i === 0) dot.classList.add('active');
+            dot.onclick = () => scrollToIndex(i);
+            progressContainer.appendChild(dot);
+        }
+    }
+
+    // Update progress dots based on scroll position
+    function updateProgressDots() {
+        const scrollLeft = certificateGrid.scrollLeft;
+        const cardWidth = certificateCards[0].offsetWidth + 20; // card width + gap
+        const currentIndex = Math.round(scrollLeft / cardWidth);
+        
+        document.querySelectorAll('.progress-dot').forEach((dot, index) => {
+            dot.classList.remove('active');
+            if (index === currentIndex) {
+                dot.classList.add('active');
+            }
+        });
+    }
+
+    // Scroll to specific certificate
+    function scrollToIndex(index) {
+        const cardWidth = certificateCards[0].offsetWidth + 20;
+        certificateGrid.scrollLeft = index * cardWidth;
+    }
+
+    // Listen to scroll events
+    certificateGrid.addEventListener('scroll', updateProgressDots);
+
+    // Initialize
+    createProgressDots();
+</script>
 
 </html>
